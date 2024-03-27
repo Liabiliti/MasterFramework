@@ -48,7 +48,7 @@ function App() {
         onDragOver={handleDragOver}>
           <div className='bg-white flex-grow rounded-md md:flex-col md:pt-8 md:pl-0 sm:flex-row pl-2 flex gap-2 items-center'>
             <div className='m-2 border p-4 rounded-md md:w-14 md:h-14 w-10 h-10 flex items-center justify-center hover:cursor-pointer'
-                  data-src="https://tailwindcss.com/docs/background-color"
+                  data-src="https://www.flyingdoctor.org.au/map/"
                   draggable="true" onDragStart={handleDragStart} onDragOver={handleDragOver}>A</div>
             <div className='m-2 border p-4 rounded-md md:w-14 md:h-14 w-10 h-10 flex items-center justify-center hover:cursor-pointer'
                   data-src="https://tailwindcss.com/docs/word-break"
