@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
-import { IconMenu2 } from "@tabler/icons-react";
+import { IconMenu2,IconPlus,IconMenu } from "@tabler/icons-react";
 import './App.css';
 import './index.css';
 import BarChart from './Widgets/BarChart';
 import MenuBar from './Components/Menu/MenuBar';
 import Popup from './Components/Popup/Popup';
+import Application from './Components/AppComponent';
 
 
 
@@ -16,7 +17,7 @@ function App() {
   const [menuBar, setMenuBar] = useState(false);
   const [popup, setPopup] = useState(false);
   const [popupData, setPopupData] = useState();
-
+  let icons = [<IconMenu2/>,<IconMenu/>,<IconPlus/>]
   const handleMenuBar = () => {
     setMenuBar(!menuBar)
   }
@@ -118,8 +119,14 @@ function App() {
           <Popup popup={popup} setPopup={setPopup} />
         </div>
 
+              
+          </main>
+          {icons.map((element)=> {
+              return <Application icon={element} text="Demo text" />
 
-      </main>
+          })}
+
+
     </div>
 
 
