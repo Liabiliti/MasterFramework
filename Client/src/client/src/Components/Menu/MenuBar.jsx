@@ -1,12 +1,20 @@
 import { IconX, IconPlus, IconMinus } from "@tabler/icons-react";
 import { useState } from "react";
 
-function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open }) {
+function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopup }) {
     const [expandedHeaderIndex, setExpandedHeaderIndex] = useState(null);
+    // const [popup, setPopup] = useState(false)
     console.log("Made it")
 
     const handleHeaderClick = (index) => {
         setExpandedHeaderIndex(index === expandedHeaderIndex ? null : index);
+    };
+
+    const handleItemClick = (event) => {
+        handleMenuBar();
+        setPopup(true);
+        console.log("Index", event.target.value)
+
     };
 
     const iconStyling = "m-4 text-slate-500 w-10 h-10"
@@ -27,7 +35,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open }) {
                             <ul className={`${index === expandedHeaderIndex ? '' : 'hidden'}`}>
                                 {itemsPerMenuHeader && itemsPerMenuHeader[index] ? itemsPerMenuHeader[index].map((item, itemIndex) => {
                                     return (
-                                        <li key={itemIndex} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold">{item}</li>
+                                        <li key={itemIndex} value={[index]} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold" onClick={handleItemClick}>{item}</li>
                                     );
                                 }) : null}
                             </ul>
