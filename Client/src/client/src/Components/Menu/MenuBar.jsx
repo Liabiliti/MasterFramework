@@ -35,7 +35,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
                             <ul className={`${index === expandedHeaderIndex ? '' : 'hidden'}`}>
                                 {itemsPerMenuHeader && itemsPerMenuHeader[index] ? itemsPerMenuHeader[index].map((item, itemIndex) => {
                                     return (
-                                        <li key={itemIndex} value={[index]} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold" onClick={handleItemClick}>{item}</li>
+                                        <li key={itemIndex} value={[index]} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold cursor-pointer" onClick={handleItemClick}>{item}</li>
                                     );
                                 }) : null}
                             </ul>
