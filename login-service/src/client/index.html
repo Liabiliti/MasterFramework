@@ -1,156 +1,204 @@
 <!doctype html>
 
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  header {
+    background: linear-gradient(45deg, #FFFFFF 25%, #855be6 57%, #486bf0 80%, #70d76e 95%, #FFFFFF 100%);
+    color: #ffffff; /* Text color of the banner */
+    padding: 20px; /* Padding to create space around the content */
+    /*height: 90px;*/
+    width:auto;
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /*Shadow*/
+  }
+  .banner-image {
+    width: 205px; /* Adjust the width of the image */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  }
+
+  .icons {
+    width: 40px; /* Adjust the width of the image */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    /*border-radius: -20%; /* Make the image round */
+  }
+  .iconsLogin {
+    width: 40px; /* Adjust the width of the image */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    vertical-align: middle; /* Align icons vertically with input fields */
+
+  }
+
+  body {
+    font-family:'Gotham', sans-serif;
+    color: #241B4A;
+    position: relative; /* Set the body to relative positioning */
+    margin: 0; /* Remove default margin */
+    /*padding-bottom: 60px;*/
+  }
+
+  body {
+    background-image: url('src/images/background.jpg');  /* Set background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 280px;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+
+  }
+
+  headerContents {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Add margin to the right of the text */
+  }
+
+  input[type="submit"] {
+    background-color: #38A868; /* Change background color of the login button */
+    color: #fff; /* Text color of the login button */
+    padding: 10px 20px; /* Add padding to the login button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 20px; /* Add border radius to the login button */
+    transition: background-color 0.2s ease; /* Add transition effect for background color change */
+    width: 115px; /* Set input width to 100% */
+
+  }
+  input[type="submit"]:hover {
+  background-color: #70d76e;
+  }
+
+
+  .small-grey-text {
+    color: #666;
+    text-decoration: underline;
+  }
+
+  .form-container p {
+    font-size: 0.9em;
+  }
+
+  footer {
+    position: static;
+    width: auto;
+    color: white;
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    height: 65vh;
+    align-ites: center;
+    margin-top: 10px;
+  }
+
+  .form-container {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 45px;
+    padding-left: 45px;
+    background-color: #ffffff;
+    border-radius: 20px 0 0 20px;
+    width: 300px;
+    margin:10 auto;
+    right: 0px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /*Shadow*/
+
+  }
+
+
+</style>
+
   <head>
     <link rel="icon" href="https://westernsydney.com.au/themes/wsa/images/WSA_Brandmark_Master_Cropped.svg" type="image/png">
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <style>
-      header {
-        background: linear-gradient(45deg, #FFFFFF 25%, #855be6 57%, #486bf0 80%, #70d76e 95%, #FFFFFF 100%);
-        color: #ffffff; /* Text color of the banner */
-        padding: 20px; /* Padding to create space around the content */
-        height: 90px;
-        display: flex;
-        justify-content: space-between; /* Align items with space between */
-        align-items: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /*Shadow*/
-      }
-      .banner-image {
-        width: 205px; /* Adjust the width of the image */
-        height: auto; /* Automatically adjust the height to maintain aspect ratio */
-        /*border-radius: -20%; /* Make the image round */
-      }
 
-      .icons {
-        width: 40px; /* Adjust the width of the image */
-        height: auto; /* Automatically adjust the height to maintain aspect ratio */
-        /*border-radius: -20%; /* Make the image round */
-      }
-      .iconsLogin {
-        width: 40px; /* Adjust the width of the image */
-        height: auto; /* Automatically adjust the height to maintain aspect ratio */
-        vertical-align: middle; /* Align icons vertically with input fields */
-
-      }
-
-      body {
-        font-family:'Gotham', sans-serif;
-        color: #241B4A;
-        position: relative; /* Set the body to relative positioning */
-        margin: 0; /* Remove default margin */
-        padding-bottom: 60px;
-      }
-
-      form {
-        text-align: center;
-      /*  margin-top: 20px;*/
-      }
-
-      input[type="text"],
-      input[type="password"] {
-        width: 270px; /* Set input width to 100% */
-        padding: 10px; /* Add padding inside input fields */
-        margin-bottom: 15px; /* Add margin at the bottom of input fields */
-        box-sizing: border-box; /* Include padding and border in the width */
-        border: 1px solid #ccc; /* Add border to input fields */
-        border-radius: 20px; /* Add border-radius to create curved corners */
-
-      }
-
-      headerContents {
-        display: flex;
-        align-items: center;
-        margin-right: 10px; /* Add margin to the right of the text */
-      }
-
-      headerContents b {
-        margin-right: 25px;
-      }
-
-      input[type="submit"] {
-        background-color: #38A868; /* Change background color of the login button */
-        color: #fff; /* Text color of the login button */
-        padding: 10px 20px; /* Add padding to the login button */
-        border: none; /* Remove border */
-        cursor: pointer; /* Change cursor to pointer on hover */
-        border-radius: 5px; /* Add border radius to the login button */
-        transition: background-color 0.2s ease; /* Add transition effect for background color change */
-        width: 107px; /* Set input width to 100% */
-
-      }
-      input[type="submit"]:hover {
-      background-color: #70d76e;
-      }
-
-      .small-grey-text {
-        color: #666; /* text color: grey */
-        font-size: 0.8em; /* font size smaller */
-        text-decoration: underline;
-      }
-
-      footer {
-        position: absolute;
-        left: 0; /* Position the footer at the left edge */
-        bottom: 0; /* Position the footer at the bottom */
-        width: 100%; /*
-        background-color: #241B4A; /* Background color of the footer */
-        color: white; /* Text color of the footer */
-        padding: 5px; /* Padding to create space around the content */
-        text-align: center; /* Align content to the center */
-      }
-
-      .container {
-        display: flex; /* Use flexbox for layout */
-        justify-content: flex-end; /* Align items to the end (right side) of the container */
-        height: 65vh; /* Set height of the container to 100% of the viewport height */
-        align-items: center; /* Center items vertically */
-      }
-
-      .form-container {
-        padding: 50px; /* Add padding to the form container */
-      }
-
-    </style>
   </head>
 
   <body>
     <header>
       <img class="banner-image" src="src/images/wsu.png" alt="Western Sydney International Airport logo">
       <headerContents>
-        <b>Login</b>
-        <img class="icons" src="src/images/3_lines.png" alt="Table of contents button">
       </headerContents>
 
     </header>
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+    function validateForm() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var errorText = document.getElementById("errorText");
+
+      // Check if credentials are incorrect
+      if (email !== "admin" || password !== "password") {
+        errorText.style.display = "block"; // Show error text
+        document.getElementById("email").classList.add("invalidInput"); // Add class to input field
+        document.getElementById("password").classList.add("invalidInput"); // Add class to input field
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+    </script>
+
+
     <div class="container">
       <div class="form-container">
-        <form method="POST">
-          <h2>Account Login</h2>
-          <p>Hello, welcome back!</p>
-          <img class="iconsLogin" src="src/images/user.png" alt="Email">
-          <label for="username"></label>
-          <input type="text" id="username" name="username" placeholder="Email Address"><br>
+        <form method="POST" id="loginForm" onsubmit="return validateForm()">
 
-          <img class="iconsLogin" src="src/images/airplane.png" alt="Password">
+          <p id="errorText" style="
+            width: 345px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            background-color: red;
+            border-radius: 20px 0 0 20px;
+            color: white;
+            text-align: center;
+            display: none;
+            ">Invalid Email Address or Password</p>
+
+          <h2>Staff Account Login</h2>
+          <p>Hello, welcome back!</p>
+          <label for="email"></label>
+          <input type="text" id="email" name="email" placeholder="Email Address" ><br>
+
           <label for="password"></label>
-          <input type="text" id="password" name="password" placeholder="Password"><br>
+          <input type="text" id="password" name="password" placeholder="Password" ><br>
 
           <input type="submit" value="Login">
+
           <p><small class="small-grey-text">Forgot Password?</small></p>
 
         </form>
       </div>
     </div>
-
-    <footer>
-      <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </footer>
-
   </body>
+  <footer>
+    <p>&copy; 2024 WSA Co. All rights reserved.</p>
+  </footer>
 </html>
+
