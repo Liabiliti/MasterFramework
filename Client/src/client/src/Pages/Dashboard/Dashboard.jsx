@@ -5,6 +5,7 @@ import MenuBar from '../../Components/Menu/MenuBar';
 import Popup from '../../Components/Popup/Popup';
 import { useFetchData } from '../../Hooks/useFetchData';
 import { fetchUserInfo } from '../../Services/authenticationAPI';
+import wsuLogo from "./wsu.png"
 
 
 function App() {
@@ -13,16 +14,6 @@ function App() {
   const [popup, setPopup] = useState(false);
   const [popupData, setPopupData] = useState();
 
-
-  const email = "jim@example.com";
-  const password = "password";
-  const userInfo = {email, password}
-  //In the example below, we are using the useFetchData
-  const users = useFetchData(["userInfo", userInfo], () => fetchUserInfo(userInfo));
-
-  users.data?.map((element) => {
-    console.log(element.UserID)
-  })
 
   const handleMenuBar = () => {
     setMenuBar(!menuBar)
@@ -60,10 +51,9 @@ function App() {
    
 
       <div className={"flex flex-col h-screen"}>
-        <nav className="flex h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-end items-center pr-2">
-          <img className=''></img>
-          <IconMenu2 className='text-white flex w-8 h-8 mr-4 cursor-pointer' onClick={handleMenuBar} />
-
+        <nav className="flex h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center px-6">
+          <img className='w-32' src={wsuLogo}></img>
+          <IconMenu2 className='text-white flex w-8 h-8 cursor-pointer' onClick={handleMenuBar} />
         </nav>
         <main className='flex-grow flex md:flex-row flex-col bg-gradient-to-r bg-slate-50 p-4'
           onDragOver={handleDragOver}>
