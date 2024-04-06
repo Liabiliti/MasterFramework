@@ -24,6 +24,7 @@ function LoginPage() {
     const handleClick = () => {
         // Trigger the fetch operation by toggling the state
         setTriggerFetch(!triggerFetch);
+        console.log(email, password);
         if(users.data.length > 0 && users)
         {
             setFailed(true);
@@ -37,7 +38,7 @@ function LoginPage() {
 
     return (
         <div className="flex flex-col h-screen">
-            <nav className="flex h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center px-6">
+            <nav className="flex drop-shadow h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center  px-6">
                 <img className='w-32' src={wsuLogo}></img>
 
             </nav>

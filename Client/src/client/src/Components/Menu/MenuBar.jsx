@@ -1,10 +1,8 @@
 import { IconX, IconPlus, IconMinus } from "@tabler/icons-react";
 import { useState } from "react";
 
-function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopup }) {
+function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopup, setOption }) {
     const [expandedHeaderIndex, setExpandedHeaderIndex] = useState(null);
-    // const [popup, setPopup] = useState(false)
-    console.log("Made it")
 
     const handleHeaderClick = (index) => {
         setExpandedHeaderIndex(index === expandedHeaderIndex ? null : index);
@@ -12,9 +10,11 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
 
     const handleItemClick = (event) => {
         handleMenuBar();
+        
+        const itemValue = event.currentTarget.getAttribute('data-value');
+        setOption(itemValue)
         setPopup(true);
         console.log("Index", event.target.value)
-
     };
 
     const iconStyling = "m-4 text-slate-500 w-10 h-10"
@@ -35,7 +35,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
                             <ul className={`${index === expandedHeaderIndex ? '' : 'hidden'}`}>
                                 {itemsPerMenuHeader && itemsPerMenuHeader[index] ? itemsPerMenuHeader[index].map((item, itemIndex) => {
                                     return (
-                                        <li key={itemIndex} value={[index]} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold cursor-pointer" onClick={handleItemClick}>{item}</li>
+                                        <li key={itemIndex} data-value={item} className="ml-10 mb-3 text-xl underline underline-offset-4 decoration-2 decoration-blue-500 font-semibold cursor-pointer" onClick={handleItemClick}>{item}</li>
                                     );
                                 }) : null}
                             </ul>
