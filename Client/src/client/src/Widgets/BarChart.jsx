@@ -10,7 +10,6 @@ function BarChart() {
             let val = Math.floor(Math.random() * 13);
             let primes = [7, 11, 5, 9];
             const updateData = data.map((element, index) => {
-                console.log((val * primes[index]) % 13);
                 return (val * primes[index]) % 13;
             });
             setData(updateData);
