@@ -103,7 +103,7 @@ function App() {
 
 
         <div className={"flex flex-col h-screen"}>
-            <nav className="flex drop-shadow-2xl h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center px-6">
+            <nav className="flex drop-shadow-2xl h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 h-fit to-blue-600 justify-between items-center py-3 px-6">
                 <img className='w-32' src={wsuLogo}></img>
                 <IconMenu2 className='text-white flex w-8 h-8 cursor-pointer' onClick={handleMenuBar} />
             </nav>
@@ -129,8 +129,8 @@ function App() {
                     </div>
                 </aside>
                 <div className='md:grid md:grid-cols-2 md:grid-rows-2 flex flex-col overflow-hidden w-full flex-grow gap-4 md:ml-4 sm:m-0' onDragOver={handleDragOver}>
-                    <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md flex-grow' id="topLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topLeft')}><BarChart /></div>
-                    <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md flex-grow' id="topRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topRight')}><BarChart /></div>
+                    <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md flex-grow' id="topLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topLeft')}></div>
+                    <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md flex-grow' id="topRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topRight')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md md:visible invisible' id="bottomLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomLeft')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md md:visible invisible' id="bottomRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomRight')}></div>
                   
