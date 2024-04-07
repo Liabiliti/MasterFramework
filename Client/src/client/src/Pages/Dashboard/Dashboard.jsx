@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IconMenu2 } from "@tabler/icons-react";
+import { IconMenu2, IconPlus } from "@tabler/icons-react";
 import BarChart from '../../Widgets/BarChart';
 import MenuBar from '../../Components/Menu/MenuBar';
 import Popup from '../../Components/Popup/Popup';
@@ -14,6 +14,8 @@ function App() {
     const [popup, setPopup] = useState(false);
     const [popupData, setPopupData] = useState();
     const [option, setOption] = useState();
+
+    let savedDashboards = ["Operations", "Retail", "In-depth Monitoring", "Queues"]
 
 
     useEffect(() => {
@@ -36,6 +38,24 @@ function App() {
                     <button
                         className="border border-blue-500 bg-blue-500 font-semibold text-white border-2 rounded-xl max-w-96 w-full h-9 mt-4 px-3 hover:bg-blue-600 hover:border-blue-600"
                     >Login</button>
+                </div>)
+                break;
+            case "Load Dashboard":
+                setPopupData(<div className="h-screen flex flex-col justify-center items-center pb-10 px-5">
+                    <h1 className="text-3xl font-bold mb-3">Load Dashboard</h1>
+                    <p className="text-slate-400 font-normal text-center mb-3">Select the desired dashboard load out from the below list.</p>
+                    <div className='flex flex-col w-full h-24 border border-2 border-black rounded-xl overflow-y-auto'>
+                        {
+                            savedDashboards.map((element) => {
+                                return (
+                                    <div className='flex justify-between items-center px-5 py-2 cursor-pointer border-b border-t'>
+                                        <h1 className="text-xl font-semibold">{element}</h1>
+                                        <IconPlus />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>)
                 break;
             case "Delete Dashboard":
@@ -83,10 +103,11 @@ function App() {
 
 
         <div className={"flex flex-col h-screen"}>
-            <nav className="flex drop-shadow h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center px-6">
+            <nav className="flex drop-shadow-2xl h-16 bg-gradient-to-r from-slate-50 from-20% via-purple-600 to-blue-600 justify-between items-center px-6">
                 <img className='w-32' src={wsuLogo}></img>
                 <IconMenu2 className='text-white flex w-8 h-8 cursor-pointer' onClick={handleMenuBar} />
             </nav>
+            {/*Dashboard Component */}
             <main className='flex-grow flex md:flex-row flex-col bg-gradient-to-r bg-slate-50 p-4'
                 onDragOver={handleDragOver}>
 
@@ -112,40 +133,12 @@ function App() {
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md flex-grow' id="topRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topRight')}><BarChart /></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md md:visible invisible' id="bottomLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomLeft')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md md:visible invisible' id="bottomRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomRight')}></div>
-                    {/* {widgets.map((element, index) => {
-          
-                return (
-                  <div className='col-auto row-auto flex w-full'>
-                    <iframe src={element} 
-                    frameborder="0"
-                    className='flex-grow rounded-md'></iframe>
-                    </div>);
-              })} */}
-                    {/* <div className='col-auto row-auto flex w-full'>
-            <iframe src="https://tailwindcss.com/docs/background-color" 
-                    frameborder="0"
-                    className='flex-grow rounded-md'></iframe>
-          </div>
-          <div className='col-auto row-auto flex'>
-            <iframe src="https://tailwindcss.com/docs/background-color" 
-                    frameborder="0"
-                    className='flex-grow rounded-md'></iframe>
-          </div>
-          <div className='col-auto row-auto flex '>
-            <iframe src="https://tailwindcss.com/docs/background-color" 
-                    frameborder="0"
-                    className='flex-grow rounded-md'></iframe>
-          </div>
-          <div className='col-auto row-auto flex '>
-            <iframe src="https://tailwindcss.com/docs/background-color" 
-                    frameborder="0"
-                    className='flex-grow rounded-md'></iframe>
-          </div> */}
+                  
                 </div>
 
                 {/* {menuBar ? <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile"]} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]}/> : null}  */}
                 <div>
-                    <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile"]} setOption={setOption} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]} />
+                    <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile", "Logout"]} setOption={setOption} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]} />
                     <Popup popup={popup} setPopup={setPopup} popUpMessage={popupData} />
                 </div>
 

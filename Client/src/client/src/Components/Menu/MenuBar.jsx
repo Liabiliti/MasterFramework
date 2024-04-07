@@ -1,8 +1,10 @@
-import { IconX, IconPlus, IconMinus } from "@tabler/icons-react";
+import { IconX, IconPlus, IconMinus, IconLogout } from "@tabler/icons-react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'; // Import useHistory
 
 function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopup, setOption }) {
     const [expandedHeaderIndex, setExpandedHeaderIndex] = useState(null);
+    const navigate = useNavigate()
 
     const handleHeaderClick = (index) => {
         setExpandedHeaderIndex(index === expandedHeaderIndex ? null : index);
@@ -10,7 +12,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
 
     const handleItemClick = (event) => {
         handleMenuBar();
-        
+
         const itemValue = event.currentTarget.getAttribute('data-value');
         setOption(itemValue)
         setPopup(true);
@@ -27,11 +29,16 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
                 {menuHeaders ? menuHeaders.map((element, index) => {
                     return (
                         <div key={index} className="ml-6 ">
-                            <div className="flex flex-row items-center justify-between cursor-pointer" onClick={() => handleHeaderClick(index)}>
-                                <h1 className="text-3xl font-bold">{element}</h1>
-                                {index === expandedHeaderIndex ? <IconMinus className={iconStyling} /> : <IconPlus className={iconStyling} />}
 
-                            </div>
+                                {element === "Logout" ?  <div className="flex flex-row items-center justify-between cursor-pointer" onClick={() => navigate("/")}>
+                                                            <h1 className="text-3xl font-bold">{element}</h1>
+                                                            <IconLogout className={iconStyling} />
+                                                        </div> :
+                                                        <div className="flex flex-row items-center justify-between cursor-pointer" onClick={() => handleHeaderClick(index)}>
+                                                            <h1 className="text-3xl font-bold">{element}</h1>
+                                                            {index === expandedHeaderIndex ? <IconMinus className={iconStyling} /> : <IconPlus className={iconStyling} />}</div>
+                }
+
                             <ul className={`${index === expandedHeaderIndex ? '' : 'hidden'}`}>
                                 {itemsPerMenuHeader && itemsPerMenuHeader[index] ? itemsPerMenuHeader[index].map((item, itemIndex) => {
                                     return (
