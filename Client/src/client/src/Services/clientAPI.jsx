@@ -1,9 +1,14 @@
-import axios from "axios";
+// api.js
+import axios from 'axios';
 
+const API_BASE_URL = 'http://localhost:3000/api';
 
-const clientAPI = axios.create({
-  baseURL: `http://localhost:3000/api`, // Set the base URL for all API requests
-  withCredentials: true,
-});
-
-export default clientAPI;
+export const postData = async (endpoint, data) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/${endpoint}`, data);
+        return response.data;
+    } catch (error) {
+        // Handle errors here or throw them to be caught by the calling function
+        throw error;
+    }
+};

@@ -4,7 +4,7 @@ import BarChart from '../../Widgets/BarChart';
 import MenuBar from '../../Components/Menu/MenuBar';
 import Popup from '../../Components/Popup/Popup';
 import { useFetchData } from '../../Hooks/useFetchData';
-import { fetchUserInfo } from '../../Services/authenticationAPI';
+// import { fetchUserInfo } from '../../Services/authenticationAPI';
 import wsuLogo from "./wsu.png"
 
 

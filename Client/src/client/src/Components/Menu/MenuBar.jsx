@@ -1,6 +1,7 @@
 import { IconX, IconPlus, IconMinus, IconLogout } from "@tabler/icons-react";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'; // Import useHistory
+import { postData } from "../../Services/clientAPI";
 
 function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopup, setOption }) {
     const [expandedHeaderIndex, setExpandedHeaderIndex] = useState(null);
@@ -9,6 +10,18 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
     const handleHeaderClick = (index) => {
         setExpandedHeaderIndex(index === expandedHeaderIndex ? null : index);
     };
+
+    const handleLogout = async() => {
+        localStorage.removeItem("token");
+        try {
+            const data = await postData('logout');
+            
+        } catch (error) {
+            console.error('An error occurred:', error);
+            setErrorMessage('An error occurred');
+        }
+        navigate("/")
+    }
 
     const handleItemClick = (event) => {
         handleMenuBar();
@@ -30,7 +43,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
                     return (
                         <div key={index} className="ml-6 ">
 
-                                {element === "Logout" ?  <div className="flex flex-row items-center justify-between cursor-pointer" onClick={() => navigate("/")}>
+                                {element === "Logout" ?  <div className="flex flex-row items-center justify-between cursor-pointer" onClick={handleLogout}>
                                                             <h1 className="text-3xl font-bold">{element}</h1>
                                                             <IconLogout className={iconStyling} />
                                                         </div> :
