@@ -133,12 +133,12 @@ function App() {
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md flex-grow' id="topRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topRight')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md md:visible invisible' id="bottomLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomLeft')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md md:visible invisible' id="bottomRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'bottomRight')}></div>
-                  
                 </div>
 
                 {/* {menuBar ? <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile"]} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]}/> : null}  */}
                 <div>
-                    <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile", "Logout"]} setOption={setOption} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]} />
+                    <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Something else", "Logout"]} setOption={setOption} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["1", "2"]]} />
+                    
                     <Popup popup={popup} setPopup={setPopup} popUpMessage={popupData} />
                 </div>
 
