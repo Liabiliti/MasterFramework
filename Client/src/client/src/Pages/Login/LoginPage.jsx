@@ -7,23 +7,41 @@ import { fetchUserInfo } from '../../Services/authenticationAPI';
 
 function LoginPage() {
 
-    const [user, setUser] = useState();
     const [failed, setFailed] = useState(true)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [triggerFetch, setTriggerFetch] = useState(false); // State to trigger fetch
+    const [errorMessage, setErrorMessage] = useState();
     const navigate = useNavigate(); // Use useHistory hook
     
+    // const handleClick = async () => {
+    //     // Directly call fetchUserInfo inside handleClick
+    //     const response = await fetchUserInfo({ email, password });
+    //     if (response && response.length > 0) {
+    //         setFailed(true);
+    //         navigate("/Dashboard");
+    //     } else {
+    //         setFailed(false);
+    //     }
+    // };
+
+
     const handleClick = async () => {
-        // Directly call fetchUserInfo inside handleClick
-        const response = await fetchUserInfo({ email, password });
-        if (response && response.length > 0) {
-            setFailed(true);
-            navigate("/Dashboard");
-        } else {
-            setFailed(false);
+        // event.preventDefault();
+        try {
+            const response = await fetchUserInfo({ email, password });
+            if (response && response.length > 0) {
+                setFailed(true);
+                navigate("/Dashboard");
+                
+            } else {
+                setFailed(false);
+                setErrorMessage('Authentication failed');
+            }
+        } catch (error) {
+            setErrorMessage('An error occurred');
         }
     };
+
 
     return (
         <div className="flex flex-col h-screen">
@@ -43,7 +61,7 @@ function LoginPage() {
                 </main>
                 <aside className="md:absolute md:z-10 flex flex-col md:w-96 w-full h-full bg-white right-0 top-0  drop-shadow md:rounded-l-lg ">
                     <div className={`${failed !== false ? "invisible" : "visible"} h-24 sd:h-1/6 border bg-red-500 border-red-500 md:rounded-l-lg rounded-b-lg px-10 flex justify-center items-center`}>
-                        <p className="text-slate-400 text-base text-white font-normal text-center">Invalid Email Address or Password</p>
+                        <p className="text-slate-400 text-base text-white font-normal text-center">errorMessage</p>
                     </div>
                     <div className=" px-8 h-screen flex flex-col justify-center items-center pb-24">
                         <h1 className="text-3xl font-bold mb-2">Account Login</h1>
