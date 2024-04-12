@@ -101,6 +101,7 @@ function LoginPage() {
                 setErrorMessage('Authentication failed');
             }
         } catch (error) {
+            setFailed(false);
             console.error('An error occurred:', error);
             setErrorMessage('An error occurred');
         }
@@ -124,7 +125,7 @@ function LoginPage() {
                 </main>
                 <aside className="md:absolute md:z-10 flex flex-col md:w-96 w-full h-full bg-white right-0 top-0  drop-shadow md:rounded-l-lg ">
                     <div className={`${failed !== false ? "invisible" : "visible"} h-24 sd:h-1/6 border bg-red-500 border-red-500 md:rounded-l-lg rounded-b-lg px-10 flex justify-center items-center`}>
-                        <p className="text-slate-400 text-base text-white font-normal text-center">errorMessage</p>
+                        <p className="text-slate-400 text-base text-white font-normal text-center">Invalid Email or Password</p>
                     </div>
                     {/* <div className=" px-8 h-screen flex flex-col justify-center items-center pb-24"> */}
                     <form onSubmit={handleSubmit} 

@@ -27,9 +27,6 @@ app.use(passport.initialize());
 // Enables Express's Session management
 app.use(passport.session());
 
-
-
-
 const authUser = (username, password, done) => {
     const query = "SELECT ID FROM admin WHERE `User Name` = ? AND Password = ?";
     db.query(query, [username, password], (error, results) => {
@@ -45,7 +42,6 @@ const authUser = (username, password, done) => {
         console.log("Unsuccessful")
         return (null, false)
     });
-   
 }
 
 // The authUser function will contain the steps required to authenticate a user
@@ -66,14 +62,13 @@ const cors = require("cors");
 //const app = express();
 const port = 3000;
 
-
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 
 app.post("/api/login", passport.authenticate("local"), (req,res) => {
-    let userClearance = req.user;
+    // let userClearance = req.user;
     console.log(req.isAuthenticated())
-    res.json({ message : "RETAIL"})
+    res.json({ message : "Access"})
 })  
 
 app.post("/api/logout", (req, res, next) => {
