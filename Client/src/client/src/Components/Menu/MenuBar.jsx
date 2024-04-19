@@ -14,7 +14,7 @@ function MenuBar({ menuHeaders, itemsPerMenuHeader, handleMenuBar, open, setPopu
     const handleLogout = async() => {
         localStorage.removeItem("token");
         try {
-            const data = await postData('logout');
+            const data = await postData('auth/logout');
             
         } catch (error) {
             console.error('An error occurred:', error);

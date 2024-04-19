@@ -87,7 +87,7 @@ function LoginPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const data = await postData('login', {
+            const data = await postData('auth/login', {
                 username: username,
                 password: password
             });
