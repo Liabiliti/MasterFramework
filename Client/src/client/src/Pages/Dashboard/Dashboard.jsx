@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { IconMenu2, IconPlus } from "@tabler/icons-react";
 import BarChart from '../../Widgets/BarChart';
 import MenuBar from '../../Components/Menu/MenuBar';
@@ -15,6 +15,32 @@ function App() {
     const [popup, setPopup] = useState(false);
     const [popupData, setPopupData] = useState();
     const [option, setOption] = useState();
+    const containerRef = useRef(null);
+    const [containerHeight, setContainerHeight] = useState(window.innerHeight*(4/5));
+    const [containerWidth, setContainerWidth] = useState(window.innerWidth*(4/5));
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (containerRef.current) {
+                setContainerHeight(containerRef.current.offsetHeight)
+                setContainerWidth(containerRef.current.offsetWidth)
+            }
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     let savedDashboards = ["Operations", "Retail", "In-depth Monitoring", "Queues"]
 
@@ -129,9 +155,10 @@ function App() {
                             draggable="true" onDragStart={handleDragStart} onDragOver={handleDragOver}>D</div>
                     </div>
                 </aside>
-                <div className='flex-grow border border-red-700 p-1 h-full'>
-                    <DashboardCanvas className="h-full w-full" />
+                <div className='flex-grow border border-blue-700 p-1 h-full' ref={containerRef}>
+                    <DashboardCanvas className="h-full w-full" height={containerHeight} width={containerWidth} />
                 </div>
+
                 {/* <div className='md:grid md:grid-cols-2 md:grid-rows-2 flex flex-col overflow-hidden w-full flex-grow gap-4 md:ml-4 sm:m-0' onDragOver={handleDragOver}>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-blue-600 rounded-md flex-grow' id="topLeft" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topLeft')}></div>
                     <div className='col-auto bg-white row-auto flex w-full border-dashed border-2 border-purple-600 rounded-md flex-grow' id="topRight" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'topRight')}></div>
@@ -142,7 +169,7 @@ function App() {
                 {/* {menuBar ? <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Profile"]} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["Password Management"]]}/> : null}  */}
                 <div>
                     <MenuBar handleMenuBar={handleMenuBar} setPopup={setPopup} open={menuBar} menuHeaders={["Management", "Something else", "Logout"]} setOption={setOption} itemsPerMenuHeader={[["Save Dashboard", "Load Dashboard", "Share Dashboard", "Delete Dashboard"], ["1", "2"]]} />
-                    
+
                     <Popup popup={popup} setPopup={setPopup} popUpMessage={popupData} />
                 </div>
 

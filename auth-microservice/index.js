@@ -128,7 +128,7 @@ app.use(express.json());
 app.post("/login", passport.authenticate("local"), (req, res) => {
     // let userClearance = req.user;
     res.cookie("token", req.user.token, { httpOnly: true, maxAge: 3600000 })
-    // res.json({message: req.user.token})
+    res.json({message: req.user.token})
 })
 
 

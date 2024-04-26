@@ -59,18 +59,18 @@ function LoginPage() {
     //             headers: { 'Content-Type': 'application/json' },
     //             body: JSON.stringify({ username, password })
     //         };
-    
+
     //         // Make the POST request to the backend
     //         const response = await fetch('http://localhost:3000/api/login', requestOptions);
-    
+
     //         // Check if the request was successful
     //         if (!response.ok) {
     //             throw new Error('Network response was not ok');
     //         }
-    
+
     //         // Parse the response to JSON
     //         const data = await response.json();
-    
+
     //         // Handle the response data
     //         if (data && data.message.length > 0) {
     //             setFailed(true);
